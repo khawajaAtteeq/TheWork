@@ -16,4 +16,4 @@ We’ll make this layer testable, so we need to create an interface in
 
   ;;;;;;;;;;;;;;;; Moving on to the user services ;;;;;;;;;;;;;;;;
 
-  add a class and a user interface 
+  add a class and a user interface  
