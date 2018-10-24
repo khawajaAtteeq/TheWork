@@ -1,0 +1,19 @@
+﻿This layer will act as our business logic layer. Note that,
+ we can make use of our API controllers to write business logic, 
+ but I am trying to segregate my business logic in an extra layer
+  so that if in future I want to use WCF,MVC, Asp.net Web Pages or 
+  any other application as my presentation layer then I can easily 
+  integrate my Business logic layer in it.
+
+We’ll make this layer testable, so we need to create an interface in
+ and declare CURD operations that we need to perform over product table.
+ Before we proceed, add the reference of BusinessEntities project and DataModel
+  project to this newly created project
+
+  "::::::::::::::::::::add the reference of BusinessEntities project and DataModel
+  project::::::::::::::"
+
+
+  ;;;;;;;;;;;;;;;; Moving on to the user services ;;;;;;;;;;;;;;;;
+
+  add a class and a user interface 

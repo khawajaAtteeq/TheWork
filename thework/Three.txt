@@ -1,0 +1,43 @@
+﻿
+Resolve dependency of dependencies using Inversion of Control and dependency injection in 
+Asp.net Web APIs with Unity Container and Managed Extensibility Framework (MEF).
+
+
+Managed Extensibility Framework (MEF)
+
+
+“The Managed Extensibility Framework or MEF is a library for creating lightweight, 
+extensible applications. It allows application developers to discover and use extensions
+ with no configuration required. It also lets extension developers easily encapsulate code
+  and avoid fragile hard dependencies. MEF not only allows extensions to be reused within
+   applications, but across applications as well.”
+
+“MEF is an integral part of the .NET Framework 4, and is available wherever the
+ .NET Framework is used. You can use MEF in your client applications,
+  whether they use Windows Forms, WPF, or any other technology, or in server 
+  applications that use ASP.NET.”
+
+  Creating a Dependency Resolver with Unity and MEF
+
+  Step 1: Right click solution explorer and add a new project named Resolver,
+  Step 2: Right click Resolver project and click on ManageNugetPackage,
+   in the interface of adding new package, search Unity.MVC3 in online library also add
+   add a reference to System.ComponentModel.Composition:This dll provides classes that are very core of MEF.
+   Step 4: Just add an interface named IComponent to Resolver project that contains the initialization method named Setup.
+Step 5: Before we declare our Setup method, just add one more interface responsible for serving as
+ a contract to register types.
+ I name this interface as IRegisterComponent,
+
+Step 6: Now declare Setup method on our previously created IComponent interface,
+ that takes instance of IRegisterComponent as a parameter
+
+Step 6: Now we’ll write a packager or you can say a wrapper over MEF and Unity to 
+register types/ components. This is the core MEF implementation.
+ Create a class named ComponentLoader, and add following code to it
+
+
+
+
+
+
+

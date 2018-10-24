@@ -1,0 +1,17 @@
+﻿
+
+“The Unity Application Block (Unity) is a lightweight, extensible dependency injection container 
+that supports constructor injection, property injection, and method call injection.
+ It provides developers with the following advantages:
+
+ It provides simplified object creation, especially for hierarchical object structures
+ and dependencies, which simplifies application code.
+
+ It supports abstraction of requirements; this allows developers to specify dependencies
+ at run time or in configuration and simplify management of crosscutting concerns.
+
+ It increases flexibility by deferring component configuration to the container.
+
+ It has a service location capability; this allows clients to store or cache the container.
+ This is especially useful in ASP.NET Web applications where developers can persist
+  the container in the ASP.NET session or application.”

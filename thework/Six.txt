@@ -1,0 +1,73 @@
+﻿:::::::::::::::::::::::::::::::::::::::::Unit Tests
+Why? Unit tests allow you to make big changes to code quickly. 
+You know it works now because you’ve run the tests,
+ when you make the changes you need to make,
+ you need to get the tests working again. This saves hours.”
+
+ We pick ::::::::::::::::::::::::::::::::NUnit
+
+
+::::::::::::::::::::::::::::::::: Moq Framework
+Moq is a simple and straight forward library to mock the objects in C#. We can mock data, 
+repositories classes and instances with the help of mock library. So when we write 
+unit tests, we do not execute them on the actual class instances, instead perform 
+in-memory unit testing by making proxy of class objects. Like NUnit,
+Moq library classes are also easy to use and understand. Almost all of its methods,
+ classes and interfaces names are self-explanatory.
+
+
+ Following is the list taken from Wikipedia on why to use mock objects, 
+  The object supplies non-deterministic results (e.g., 
+				the current time or the current temperature); 
+  Has states that are not easy to create or reproduce (e.g., a network error); 
+  Is slow (e.g., a complete database, which would have to be initialized before the test);
+  Does not yet exist or may change behavior;  Would have to include information and methods
+  exclusively for testing purposes (and not for its actual task).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

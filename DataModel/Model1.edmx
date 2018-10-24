@@ -1,0 +1,1006 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TheWorkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccountsBalanceSheetNote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BalanceSheetNoteNumber" Type="int" Nullable="false" />
+          <Property Name="BalanceSheetNoteName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="AccountsDetailAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DetailAccountCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DetailAccountName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="HeadAccountId" Type="int" Nullable="false" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="AccountsGroupAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupAccountCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="GroupAccountName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MainAccountId" Type="int" Nullable="false" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="AccountsHeadAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HeadAccountCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="HeadAccountName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="GroupAccountId" Type="int" Nullable="false" />
+          <Property Name="BalanceSheetNoteId" Type="int" />
+          <Property Name="ProfitLoseNoteId" Type="int" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="AccountsMainAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MainAccountCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MainAccountName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AccountClass" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="AccountsProfitLoseNote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ProfitLoseNoteNumber" Type="int" Nullable="false" />
+          <Property Name="ProfitLoseNoteName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="AccountsTransactionVoucherDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VoucherId" Type="int" Nullable="false" />
+          <Property Name="AccountId" Type="int" Nullable="false" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="DebitAmount" Type="money" />
+          <Property Name="CreditAmount" Type="money" />
+          <Property Name="BankName" Type="nvarchar(max)" />
+          <Property Name="BankBranchName" Type="nvarchar(max)" />
+          <Property Name="CheckTitle" Type="nvarchar(max)" />
+          <Property Name="ChequeNumber" Type="nvarchar(max)" />
+          <Property Name="ChcequeDate" Type="datetime" />
+          <Property Name="IsDebit" Type="bit" />
+          <Property Name="IsCredit" Type="bit" />
+        </EntityType>
+        <EntityType Name="AccountsTransactionVoucherHead">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VoucherTypeId" Type="int" Nullable="false" />
+          <Property Name="VoucherDate" Type="datetime" Nullable="false" />
+          <Property Name="VoucherNumber" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="VoucherMethod" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ReferenceAccountId" Type="int" />
+          <Property Name="VoucherRemarks" Type="nvarchar(max)" />
+          <Property Name="VoucherStatus" Type="nvarchar(max)" />
+          <Property Name="EntryUserId" Type="int" />
+          <Property Name="EntryDate" Type="datetime" Nullable="false" />
+          <Property Name="CheckedUserId" Type="int" />
+          <Property Name="CheckedDate" Type="datetime" />
+          <Property Name="PostedUserId" Type="int" />
+          <Property Name="PostedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AccountsVoucherType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VoucherTypeCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="VoucherTypeName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyShortName" Type="nvarchar(max)" />
+          <Property Name="CompanyFullName" Type="nvarchar(max)" />
+          <Property Name="City" Type="nvarchar(max)" />
+          <Property Name="Region" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="PostalCode" Type="nvarchar(max)" />
+          <Property Name="Mobile" Type="nvarchar(max)" />
+          <Property Name="LandLine" Type="nvarchar(max)" />
+          <Property Name="Fax" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="InventoryItemCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemCategoryCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ItemCategoryName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ItemGroupID" Type="int" Nullable="false" />
+          <Property Name="PurchaseAccountID" Type="int" />
+          <Property Name="SaleAccountID" Type="int" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="InventoryItemGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemGroupCode" Type="nvarchar(max)" />
+          <Property Name="ItemGroupName" Type="nvarchar(max)" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="InventoryItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ItemName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ItemDescription" Type="nvarchar(max)" />
+          <Property Name="PackQuantity" Type="float" />
+          <Property Name="UnitPurchasePrice" Type="money" />
+          <Property Name="UnitSalePrice" Type="money" />
+          <Property Name="IsVat" Type="bit" />
+          <Property Name="StockMaxLevel" Type="float" />
+          <Property Name="StoctNormalLevel" Type="float" />
+          <Property Name="StockMinLevel" Type="float" />
+          <Property Name="ItemImagePath" Type="nvarchar(max)" />
+          <Property Name="ItemUnitId" Type="int" Nullable="false" />
+          <Property Name="ItemGroupId" Type="int" Nullable="false" />
+          <Property Name="ItemCategoryId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="InventoryItemUnits">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemUnitCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ItemUnitName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="InventoryTransactionPurchaseDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="PurchaseId" Type="int" Nullable="false" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="ItemUnitId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="float" Nullable="false" />
+          <Property Name="UnitPrice" Type="money" Nullable="false" />
+          <Property Name="VatPercentage" Type="float" />
+          <Property Name="Vat" Type="money" />
+          <Property Name="DiscountPercentage" Type="float" />
+          <Property Name="DiscountAmount" Type="money" />
+          <Property Name="PurchaseAmount" Type="money" Nullable="false" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="InventoryTransactionPurchaseHead">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="PurchaseDate" Type="datetime" Nullable="false" />
+          <Property Name="PurchaseNo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="VendorId" Type="int" Nullable="false" />
+          <Property Name="Remarks" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PurchaseTotalAmount" Type="money" />
+          <Property Name="PurchaseOrderId" Type="int" />
+          <Property Name="PurchaseStatus" Type="nvarchar(max)" />
+          <Property Name="EntryUserId" Type="int" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="CheckedUserId" Type="int" />
+          <Property Name="CheckedDate" Type="datetime" />
+          <Property Name="PostedUserId" Type="int" />
+          <Property Name="PostedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="InventoryTransactionSaleDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="SaleId" Type="int" Nullable="false" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="ItemUnitId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="float" Nullable="false" />
+          <Property Name="UnitPrice" Type="money" Nullable="false" />
+          <Property Name="VatPercentage" Type="float" />
+          <Property Name="Vat" Type="money" />
+          <Property Name="DiscountPercentage" Type="float" />
+          <Property Name="DiscountAmount" Type="money" />
+          <Property Name="SaleAmount" Type="money" Nullable="false" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="InventoryTransactionSaleHead">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="SaleDate" Type="datetime" Nullable="false" />
+          <Property Name="SaleNo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="Remarks" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SaleTotalAmount" Type="money" />
+          <Property Name="SaleOrderId" Type="int" />
+          <Property Name="SaleStatus" Type="nvarchar(max)" />
+          <Property Name="EntryUserId" Type="int" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="CheckedUserId" Type="int" />
+          <Property Name="CheckedDate" Type="datetime" />
+          <Property Name="PostedUserId" Type="int" />
+          <Property Name="PostedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tokens">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="AuthToken" Type="nvarchar" MaxLength="250" />
+          <Property Name="IssuedOn" Type="datetime" />
+          <Property Name="ExpiresOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserInformation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="Married" Type="bit" />
+          <Property Name="City" Type="nvarchar(max)" />
+          <Property Name="State" Type="nvarchar(max)" />
+          <Property Name="Country" Type="nvarchar(max)" />
+          <Property Name="Sex" Type="bit" />
+          <Property Name="DateOfBirth" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Tokens_User">
+          <End Role="UserInformation" Type="Self.UserInformation" Multiplicity="0..1" />
+          <End Role="Tokens" Type="Self.Tokens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInformation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tokens">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TheWorkModelStoreContainer">
+          <EntitySet Name="AccountsBalanceSheetNote" EntityType="Self.AccountsBalanceSheetNote" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountsDetailAccount" EntityType="Self.AccountsDetailAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountsGroupAccount" EntityType="Self.AccountsGroupAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountsHeadAccount" EntityType="Self.AccountsHeadAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountsMainAccount" EntityType="Self.AccountsMainAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountsProfitLoseNote" EntityType="Self.AccountsProfitLoseNote" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountsTransactionVoucherDetail" EntityType="Self.AccountsTransactionVoucherDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountsTransactionVoucherHead" EntityType="Self.AccountsTransactionVoucherHead" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountsVoucherType" EntityType="Self.AccountsVoucherType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InventoryItemCategory" EntityType="Self.InventoryItemCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InventoryItemGroup" EntityType="Self.InventoryItemGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InventoryItems" EntityType="Self.InventoryItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InventoryItemUnits" EntityType="Self.InventoryItemUnits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InventoryTransactionPurchaseDetail" EntityType="Self.InventoryTransactionPurchaseDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InventoryTransactionPurchaseHead" EntityType="Self.InventoryTransactionPurchaseHead" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InventoryTransactionSaleDetail" EntityType="Self.InventoryTransactionSaleDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InventoryTransactionSaleHead" EntityType="Self.InventoryTransactionSaleHead" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tokens" EntityType="Self.Tokens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInformation" EntityType="Self.UserInformation" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Tokens_User" Association="Self.FK_Tokens_User">
+            <End Role="UserInformation" EntitySet="UserInformation" />
+            <End Role="Tokens" EntitySet="Tokens" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TheWorkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TheWorkEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccountsBalanceSheetNotes" EntityType="TheWorkModel.AccountsBalanceSheetNote" />
+          <EntitySet Name="AccountsDetailAccounts" EntityType="TheWorkModel.AccountsDetailAccount" />
+          <EntitySet Name="AccountsGroupAccounts" EntityType="TheWorkModel.AccountsGroupAccount" />
+          <EntitySet Name="AccountsHeadAccounts" EntityType="TheWorkModel.AccountsHeadAccount" />
+          <EntitySet Name="AccountsMainAccounts" EntityType="TheWorkModel.AccountsMainAccount" />
+          <EntitySet Name="AccountsProfitLoseNotes" EntityType="TheWorkModel.AccountsProfitLoseNote" />
+          <EntitySet Name="AccountsTransactionVoucherDetails" EntityType="TheWorkModel.AccountsTransactionVoucherDetail" />
+          <EntitySet Name="AccountsTransactionVoucherHeads" EntityType="TheWorkModel.AccountsTransactionVoucherHead" />
+          <EntitySet Name="AccountsVoucherTypes" EntityType="TheWorkModel.AccountsVoucherType" />
+          <EntitySet Name="Companies" EntityType="TheWorkModel.Company" />
+          <EntitySet Name="InventoryItemCategories" EntityType="TheWorkModel.InventoryItemCategory" />
+          <EntitySet Name="InventoryItemGroups" EntityType="TheWorkModel.InventoryItemGroup" />
+          <EntitySet Name="InventoryItems" EntityType="TheWorkModel.InventoryItem" />
+          <EntitySet Name="InventoryItemUnits" EntityType="TheWorkModel.InventoryItemUnit" />
+          <EntitySet Name="InventoryTransactionPurchaseDetails" EntityType="TheWorkModel.InventoryTransactionPurchaseDetail" />
+          <EntitySet Name="InventoryTransactionPurchaseHeads" EntityType="TheWorkModel.InventoryTransactionPurchaseHead" />
+          <EntitySet Name="InventoryTransactionSaleDetails" EntityType="TheWorkModel.InventoryTransactionSaleDetail" />
+          <EntitySet Name="InventoryTransactionSaleHeads" EntityType="TheWorkModel.InventoryTransactionSaleHead" />
+          <EntitySet Name="Products" EntityType="TheWorkModel.Product" />
+          <EntitySet Name="Tokens" EntityType="TheWorkModel.Token" />
+          <EntitySet Name="UserInformations" EntityType="TheWorkModel.UserInformation" />
+          <AssociationSet Name="FK_Tokens_User" Association="TheWorkModel.FK_Tokens_User">
+            <End Role="UserInformation" EntitySet="UserInformations" />
+            <End Role="Token" EntitySet="Tokens" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AccountsBalanceSheetNote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BalanceSheetNoteNumber" Type="Int32" Nullable="false" />
+          <Property Name="BalanceSheetNoteName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="AccountsDetailAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DetailAccountCode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DetailAccountName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HeadAccountId" Type="Int32" Nullable="false" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="AccountsGroupAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupAccountCode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GroupAccountName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MainAccountId" Type="Int32" Nullable="false" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="AccountsHeadAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HeadAccountCode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HeadAccountName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GroupAccountId" Type="Int32" Nullable="false" />
+          <Property Name="BalanceSheetNoteId" Type="Int32" />
+          <Property Name="ProfitLoseNoteId" Type="Int32" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="AccountsMainAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MainAccountCode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MainAccountName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AccountClass" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="AccountsProfitLoseNote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ProfitLoseNoteNumber" Type="Int32" Nullable="false" />
+          <Property Name="ProfitLoseNoteName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="AccountsTransactionVoucherDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VoucherId" Type="Int32" Nullable="false" />
+          <Property Name="AccountId" Type="Int32" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DebitAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CreditAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BankName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BankBranchName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CheckTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChequeNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChcequeDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDebit" Type="Boolean" />
+          <Property Name="IsCredit" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="AccountsTransactionVoucherHead">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VoucherTypeId" Type="Int32" Nullable="false" />
+          <Property Name="VoucherDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="VoucherNumber" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VoucherMethod" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReferenceAccountId" Type="Int32" />
+          <Property Name="VoucherRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VoucherStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EntryUserId" Type="Int32" />
+          <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CheckedUserId" Type="Int32" />
+          <Property Name="CheckedDate" Type="DateTime" Precision="3" />
+          <Property Name="PostedUserId" Type="Int32" />
+          <Property Name="PostedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="AccountsVoucherType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VoucherTypeCode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VoucherTypeName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyShortName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyFullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Region" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LandLine" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="InventoryItemCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemCategoryCode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ItemCategoryName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ItemGroupID" Type="Int32" Nullable="false" />
+          <Property Name="PurchaseAccountID" Type="Int32" />
+          <Property Name="SaleAccountID" Type="Int32" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="InventoryItemGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemGroupCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ItemGroupName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="InventoryItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemCode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ItemName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ItemDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PackQuantity" Type="Double" />
+          <Property Name="UnitPurchasePrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="UnitSalePrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IsVat" Type="Boolean" />
+          <Property Name="StockMaxLevel" Type="Double" />
+          <Property Name="StoctNormalLevel" Type="Double" />
+          <Property Name="StockMinLevel" Type="Double" />
+          <Property Name="ItemImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ItemUnitId" Type="Int32" Nullable="false" />
+          <Property Name="ItemGroupId" Type="Int32" Nullable="false" />
+          <Property Name="ItemCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="InventoryItemUnit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemUnitCode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ItemUnitName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="InventoryTransactionPurchaseDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="PurchaseId" Type="Int32" Nullable="false" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="ItemUnitId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Double" Nullable="false" />
+          <Property Name="UnitPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="VatPercentage" Type="Double" />
+          <Property Name="Vat" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DiscountPercentage" Type="Double" />
+          <Property Name="DiscountAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PurchaseAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="InventoryTransactionPurchaseHead">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="PurchaseDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PurchaseNo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VendorId" Type="Int32" Nullable="false" />
+          <Property Name="Remarks" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PurchaseTotalAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PurchaseOrderId" Type="Int32" />
+          <Property Name="PurchaseStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EntryUserId" Type="Int32" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="CheckedUserId" Type="Int32" />
+          <Property Name="CheckedDate" Type="DateTime" Precision="3" />
+          <Property Name="PostedUserId" Type="Int32" />
+          <Property Name="PostedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="InventoryTransactionSaleDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="SaleId" Type="Int32" Nullable="false" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="ItemUnitId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Double" Nullable="false" />
+          <Property Name="UnitPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="VatPercentage" Type="Double" />
+          <Property Name="Vat" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DiscountPercentage" Type="Double" />
+          <Property Name="DiscountAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SaleAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="InventoryTransactionSaleHead">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="SaleDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SaleNo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="Remarks" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SaleTotalAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SaleOrderId" Type="Int32" />
+          <Property Name="SaleStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EntryUserId" Type="Int32" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="CheckedUserId" Type="Int32" />
+          <Property Name="CheckedDate" Type="DateTime" Precision="3" />
+          <Property Name="PostedUserId" Type="Int32" />
+          <Property Name="PostedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Token">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="AuthToken" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IssuedOn" Type="DateTime" Precision="3" />
+          <Property Name="ExpiresOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserInformation" Relationship="TheWorkModel.FK_Tokens_User" FromRole="Token" ToRole="UserInformation" />
+        </EntityType>
+        <EntityType Name="UserInformation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Married" Type="Boolean" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="Boolean" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Tokens" Relationship="TheWorkModel.FK_Tokens_User" FromRole="UserInformation" ToRole="Token" />
+        </EntityType>
+        <Association Name="FK_Tokens_User">
+          <End Type="TheWorkModel.UserInformation" Role="UserInformation" Multiplicity="0..1" />
+          <End Type="TheWorkModel.Token" Role="Token" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInformation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Token">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TheWorkModelStoreContainer" CdmEntityContainer="TheWorkEntities">
+          <EntitySetMapping Name="AccountsBalanceSheetNotes">
+            <EntityTypeMapping TypeName="TheWorkModel.AccountsBalanceSheetNote">
+              <MappingFragment StoreEntitySet="AccountsBalanceSheetNote">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="BalanceSheetNoteName" ColumnName="BalanceSheetNoteName" />
+                <ScalarProperty Name="BalanceSheetNoteNumber" ColumnName="BalanceSheetNoteNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountsDetailAccounts">
+            <EntityTypeMapping TypeName="TheWorkModel.AccountsDetailAccount">
+              <MappingFragment StoreEntitySet="AccountsDetailAccount">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="HeadAccountId" ColumnName="HeadAccountId" />
+                <ScalarProperty Name="DetailAccountName" ColumnName="DetailAccountName" />
+                <ScalarProperty Name="DetailAccountCode" ColumnName="DetailAccountCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountsGroupAccounts">
+            <EntityTypeMapping TypeName="TheWorkModel.AccountsGroupAccount">
+              <MappingFragment StoreEntitySet="AccountsGroupAccount">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="MainAccountId" ColumnName="MainAccountId" />
+                <ScalarProperty Name="GroupAccountName" ColumnName="GroupAccountName" />
+                <ScalarProperty Name="GroupAccountCode" ColumnName="GroupAccountCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountsHeadAccounts">
+            <EntityTypeMapping TypeName="TheWorkModel.AccountsHeadAccount">
+              <MappingFragment StoreEntitySet="AccountsHeadAccount">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="ProfitLoseNoteId" ColumnName="ProfitLoseNoteId" />
+                <ScalarProperty Name="BalanceSheetNoteId" ColumnName="BalanceSheetNoteId" />
+                <ScalarProperty Name="GroupAccountId" ColumnName="GroupAccountId" />
+                <ScalarProperty Name="HeadAccountName" ColumnName="HeadAccountName" />
+                <ScalarProperty Name="HeadAccountCode" ColumnName="HeadAccountCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountsMainAccounts">
+            <EntityTypeMapping TypeName="TheWorkModel.AccountsMainAccount">
+              <MappingFragment StoreEntitySet="AccountsMainAccount">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="AccountClass" ColumnName="AccountClass" />
+                <ScalarProperty Name="MainAccountName" ColumnName="MainAccountName" />
+                <ScalarProperty Name="MainAccountCode" ColumnName="MainAccountCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountsProfitLoseNotes">
+            <EntityTypeMapping TypeName="TheWorkModel.AccountsProfitLoseNote">
+              <MappingFragment StoreEntitySet="AccountsProfitLoseNote">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ProfitLoseNoteName" ColumnName="ProfitLoseNoteName" />
+                <ScalarProperty Name="ProfitLoseNoteNumber" ColumnName="ProfitLoseNoteNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountsTransactionVoucherDetails">
+            <EntityTypeMapping TypeName="TheWorkModel.AccountsTransactionVoucherDetail">
+              <MappingFragment StoreEntitySet="AccountsTransactionVoucherDetail">
+                <ScalarProperty Name="IsCredit" ColumnName="IsCredit" />
+                <ScalarProperty Name="IsDebit" ColumnName="IsDebit" />
+                <ScalarProperty Name="ChcequeDate" ColumnName="ChcequeDate" />
+                <ScalarProperty Name="ChequeNumber" ColumnName="ChequeNumber" />
+                <ScalarProperty Name="CheckTitle" ColumnName="CheckTitle" />
+                <ScalarProperty Name="BankBranchName" ColumnName="BankBranchName" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="CreditAmount" ColumnName="CreditAmount" />
+                <ScalarProperty Name="DebitAmount" ColumnName="DebitAmount" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="VoucherId" ColumnName="VoucherId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountsTransactionVoucherHeads">
+            <EntityTypeMapping TypeName="TheWorkModel.AccountsTransactionVoucherHead">
+              <MappingFragment StoreEntitySet="AccountsTransactionVoucherHead">
+                <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
+                <ScalarProperty Name="PostedUserId" ColumnName="PostedUserId" />
+                <ScalarProperty Name="CheckedDate" ColumnName="CheckedDate" />
+                <ScalarProperty Name="CheckedUserId" ColumnName="CheckedUserId" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EntryUserId" ColumnName="EntryUserId" />
+                <ScalarProperty Name="VoucherStatus" ColumnName="VoucherStatus" />
+                <ScalarProperty Name="VoucherRemarks" ColumnName="VoucherRemarks" />
+                <ScalarProperty Name="ReferenceAccountId" ColumnName="ReferenceAccountId" />
+                <ScalarProperty Name="VoucherMethod" ColumnName="VoucherMethod" />
+                <ScalarProperty Name="VoucherNumber" ColumnName="VoucherNumber" />
+                <ScalarProperty Name="VoucherDate" ColumnName="VoucherDate" />
+                <ScalarProperty Name="VoucherTypeId" ColumnName="VoucherTypeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountsVoucherTypes">
+            <EntityTypeMapping TypeName="TheWorkModel.AccountsVoucherType">
+              <MappingFragment StoreEntitySet="AccountsVoucherType">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="VoucherTypeName" ColumnName="VoucherTypeName" />
+                <ScalarProperty Name="VoucherTypeCode" ColumnName="VoucherTypeCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="TheWorkModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="LandLine" ColumnName="LandLine" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="CompanyFullName" ColumnName="CompanyFullName" />
+                <ScalarProperty Name="CompanyShortName" ColumnName="CompanyShortName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InventoryItemCategories">
+            <EntityTypeMapping TypeName="TheWorkModel.InventoryItemCategory">
+              <MappingFragment StoreEntitySet="InventoryItemCategory">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="SaleAccountID" ColumnName="SaleAccountID" />
+                <ScalarProperty Name="PurchaseAccountID" ColumnName="PurchaseAccountID" />
+                <ScalarProperty Name="ItemGroupID" ColumnName="ItemGroupID" />
+                <ScalarProperty Name="ItemCategoryName" ColumnName="ItemCategoryName" />
+                <ScalarProperty Name="ItemCategoryCode" ColumnName="ItemCategoryCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InventoryItemGroups">
+            <EntityTypeMapping TypeName="TheWorkModel.InventoryItemGroup">
+              <MappingFragment StoreEntitySet="InventoryItemGroup">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="ItemGroupName" ColumnName="ItemGroupName" />
+                <ScalarProperty Name="ItemGroupCode" ColumnName="ItemGroupCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InventoryItems">
+            <EntityTypeMapping TypeName="TheWorkModel.InventoryItem">
+              <MappingFragment StoreEntitySet="InventoryItems">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
+                <ScalarProperty Name="ItemGroupId" ColumnName="ItemGroupId" />
+                <ScalarProperty Name="ItemUnitId" ColumnName="ItemUnitId" />
+                <ScalarProperty Name="ItemImagePath" ColumnName="ItemImagePath" />
+                <ScalarProperty Name="StockMinLevel" ColumnName="StockMinLevel" />
+                <ScalarProperty Name="StoctNormalLevel" ColumnName="StoctNormalLevel" />
+                <ScalarProperty Name="StockMaxLevel" ColumnName="StockMaxLevel" />
+                <ScalarProperty Name="IsVat" ColumnName="IsVat" />
+                <ScalarProperty Name="UnitSalePrice" ColumnName="UnitSalePrice" />
+                <ScalarProperty Name="UnitPurchasePrice" ColumnName="UnitPurchasePrice" />
+                <ScalarProperty Name="PackQuantity" ColumnName="PackQuantity" />
+                <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InventoryItemUnits">
+            <EntityTypeMapping TypeName="TheWorkModel.InventoryItemUnit">
+              <MappingFragment StoreEntitySet="InventoryItemUnits">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="ItemUnitName" ColumnName="ItemUnitName" />
+                <ScalarProperty Name="ItemUnitCode" ColumnName="ItemUnitCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InventoryTransactionPurchaseDetails">
+            <EntityTypeMapping TypeName="TheWorkModel.InventoryTransactionPurchaseDetail">
+              <MappingFragment StoreEntitySet="InventoryTransactionPurchaseDetail">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="PurchaseAmount" ColumnName="PurchaseAmount" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+                <ScalarProperty Name="Vat" ColumnName="Vat" />
+                <ScalarProperty Name="VatPercentage" ColumnName="VatPercentage" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ItemUnitId" ColumnName="ItemUnitId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="PurchaseId" ColumnName="PurchaseId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InventoryTransactionPurchaseHeads">
+            <EntityTypeMapping TypeName="TheWorkModel.InventoryTransactionPurchaseHead">
+              <MappingFragment StoreEntitySet="InventoryTransactionPurchaseHead">
+                <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
+                <ScalarProperty Name="PostedUserId" ColumnName="PostedUserId" />
+                <ScalarProperty Name="CheckedDate" ColumnName="CheckedDate" />
+                <ScalarProperty Name="CheckedUserId" ColumnName="CheckedUserId" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EntryUserId" ColumnName="EntryUserId" />
+                <ScalarProperty Name="PurchaseStatus" ColumnName="PurchaseStatus" />
+                <ScalarProperty Name="PurchaseOrderId" ColumnName="PurchaseOrderId" />
+                <ScalarProperty Name="PurchaseTotalAmount" ColumnName="PurchaseTotalAmount" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="PurchaseNo" ColumnName="PurchaseNo" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InventoryTransactionSaleDetails">
+            <EntityTypeMapping TypeName="TheWorkModel.InventoryTransactionSaleDetail">
+              <MappingFragment StoreEntitySet="InventoryTransactionSaleDetail">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="SaleAmount" ColumnName="SaleAmount" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+                <ScalarProperty Name="Vat" ColumnName="Vat" />
+                <ScalarProperty Name="VatPercentage" ColumnName="VatPercentage" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ItemUnitId" ColumnName="ItemUnitId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InventoryTransactionSaleHeads">
+            <EntityTypeMapping TypeName="TheWorkModel.InventoryTransactionSaleHead">
+              <MappingFragment StoreEntitySet="InventoryTransactionSaleHead">
+                <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
+                <ScalarProperty Name="PostedUserId" ColumnName="PostedUserId" />
+                <ScalarProperty Name="CheckedDate" ColumnName="CheckedDate" />
+                <ScalarProperty Name="CheckedUserId" ColumnName="CheckedUserId" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EntryUserId" ColumnName="EntryUserId" />
+                <ScalarProperty Name="SaleStatus" ColumnName="SaleStatus" />
+                <ScalarProperty Name="SaleOrderId" ColumnName="SaleOrderId" />
+                <ScalarProperty Name="SaleTotalAmount" ColumnName="SaleTotalAmount" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="SaleNo" ColumnName="SaleNo" />
+                <ScalarProperty Name="SaleDate" ColumnName="SaleDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="TheWorkModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tokens">
+            <EntityTypeMapping TypeName="TheWorkModel.Token">
+              <MappingFragment StoreEntitySet="Tokens">
+                <ScalarProperty Name="ExpiresOn" ColumnName="ExpiresOn" />
+                <ScalarProperty Name="IssuedOn" ColumnName="IssuedOn" />
+                <ScalarProperty Name="AuthToken" ColumnName="AuthToken" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInformations">
+            <EntityTypeMapping TypeName="TheWorkModel.UserInformation">
+              <MappingFragment StoreEntitySet="UserInformation">
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Married" ColumnName="Married" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

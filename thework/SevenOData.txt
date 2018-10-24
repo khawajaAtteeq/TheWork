@@ -1,0 +1,44 @@
+﻿The OData specification calls these parameters query options.
+ You can enable OData query options for any Web API controller
+  in your project — the controller does not need to be an OData
+   endpoint. This gives you a convenient way to add features such
+    as filtering and sorting to any Web API application.
+”
+Suppose our product table in the database contains more than
+ 50000 products and we want to fetch only top 50 products based
+  on certain conditions like product id or price or name, then as
+   per our current implementation of the service, I’ll have to fetch
+    all the products from the server database and filter them on client
+	 or another option could be that I fetch the data at server only and
+	  filter the same and send the filtered data to client. In both the cases
+	   I am bearing a cost of writing an extra code of filtering the data. Here
+	    comes OData in picture. OData allows you to create services that are query
+		 able. If the endpoints of the exposed services are OData enabled or supports
+		  OData query options then the service implementation would be in such a way that
+		   it considers the OData request and process it accordingly. So had that request
+		    for 50 records been an OData request, the service would have fetched only 50 records
+			 from the server. Not only filtering, but OData provides features like searching, sorting,
+			  skipping the data, selecting the data too. I’ll explain the
+concept with practical implementation. We’ll use our already created service and modify them to be enabled for OData query options.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::Query Options
+
+Following are the OData query options that asp.net WebAPI supports,
+1. $orderby: Sorts the fetched record in particular order like ascending or descending.
+2. $select: Selects the columns or properties in the result set. Specifies which all attributes or properties to include in the fetched result.
+3. $skip: Used to skip the number of records or results. For e.g. I want to skip first 100 records from the database while fetching complete table data, then I can make use of $skip.
+4. $top: Fetches only top n records. For e.g. I want to fetch top 10 records from the database, then my particular service should be OData enabled to support $top query option.
+5. $expand: Expands the related domain entities of the fetched entities.
+6. $filter: Filters the result set based on certain conditions, it is like where clause of LINQ. For e.g. I want to fetch the records of 50 students who have scored more than 90% marks, and then I can make use of this query option.
+7. $inlinecount: This query option is mostly used for pagination at client side. It tells the count of total entities fetched from the server to the client.
+
+
+
+
+
+
+
+
+
+
+

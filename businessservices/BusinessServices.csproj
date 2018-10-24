@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{683DA1B7-AF3A-4F18-801D-E8BA3A3E88EE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BusinessServices</RootNamespace>
+    <AssemblyName>BusinessServices</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DependencyResolver.cs" />
+    <Compile Include="Interface\IAccountsBalanceSheetNote.cs" />
+    <Compile Include="Interface\IAccountsDetailAccount.cs" />
+    <Compile Include="Interface\IAccountsGroupAccount.cs" />
+    <Compile Include="Interface\IAccountsHeadAccount.cs" />
+    <Compile Include="Interface\IAccountsProfitLoseNote.cs" />
+    <Compile Include="Interface\IAccountsTransactionVoucherHead.cs" />
+    <Compile Include="Interface\IAccountsVoucherType.cs" />
+    <Compile Include="Interface\IInventoryItem.cs" />
+    <Compile Include="Interface\IInventoryItemCategory.cs" />
+    <Compile Include="Interface\IInventoryItemGroupServices.cs" />
+    <Compile Include="Interface\IInventoryTransactionPurchaseDetail.cs" />
+    <Compile Include="Interface\IInventoryTransactionPurchaseHead.cs" />
+    <Compile Include="Interface\IInventoryTransactionSaleDetail.cs" />
+    <Compile Include="Services\AccountsBalanceSheetNoteServices.cs" />
+    <Compile Include="Services\AccountsDetailAccountServices.cs" />
+    <Compile Include="Services\AccountsGroupAccountServices.cs" />
+    <Compile Include="Services\AccountsHeadAccountServices.cs" />
+    <Compile Include="Services\AccountsProfitLoseNoteServices.cs" />
+    <Compile Include="Services\AccountsTransactionVoucherHeadServices.cs" />
+    <Compile Include="Services\AccountsVoucherTypeServices.cs" />
+    <Compile Include="Services\InventoryItemCategoryServices.cs" />
+    <Compile Include="Services\InventoryItemGroupServices.cs" />
+    <Compile Include="Services\InventoryItemServices.cs" />
+    <Compile Include="Interface\IProductServices.cs" />
+    <Compile Include="Interface\ITokenServices.cs" />
+    <Compile Include="Interface\IUserService.cs" />
+    <Compile Include="Services\InventoryTransactionPurchaseDetailServices.cs" />
+    <Compile Include="Services\InventoryTransactionPurchaseHeadServices.cs" />
+    <Compile Include="Services\InventoryTransactionSaleDetailServices.cs" />
+    <Compile Include="Services\ProductServices.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\TokenServices.cs" />
+    <Compile Include="Services\UserServices.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReadFirst.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessEntities\BusinessEntities.csproj">
+      <Project>{b17ee557-823e-4c2f-a4f1-4a6573d43767}</Project>
+      <Name>BusinessEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataModel\DataModel.csproj">
+      <Project>{aba57731-8aae-44d8-b356-18316f0536e5}</Project>
+      <Name>DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Resolver\Resolver.csproj">
+      <Project>{51ba6684-5c5d-4f49-973a-702405297dae}</Project>
+      <Name>Resolver</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

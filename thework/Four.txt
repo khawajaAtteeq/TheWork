@@ -1,0 +1,12 @@
+﻿
+ROUTING 
+
+Routing in generic terms for any service, api, website is a kind of pattern
+ defining system that tries to maps all request from the clients and resolves
+  that request by providing some response to that request.In WebAPI we can 
+  define routes in WebAPIConfig file, these routes are defined in an internal
+   Route Table.We can define multiple sets of Routes in that table.
+
+
+
+

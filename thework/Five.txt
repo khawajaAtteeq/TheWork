@@ -1,0 +1,87 @@
+﻿LOGING AND EXCEPTION HANDLING
+
+We’ll follow centralized way of handling exceptions in WebAPI
+ and write our custom classes to be mapped to the type of exception
+  that we encounter and log the accordingly. We’ll use NLog to log requests
+   and exceptions as well. We’ll leverage the capabilities of Exception Filters
+    and Action Filters to centralize request logging and exception handling in WebAPI.
+
+
+	Request Logging
+Since we are writing web services, we are exposing our end points.
+ We must know where the requests are coming from and what requests  are
+  coming to our server. Logging could be very beneficial and helps us in a
+				 lot of ways like, debugging, tracing, monitoring and analytics.
+
+				 Step 1: Download NLog Package
+				 Step 2: Configuring NLog
+				 Configer the NLog in web.config..
+				 ADD A NEW FOLDER AT ROOT FOR APILOGS
+				 AS WE DEFINED THAT IN <NLog> section of
+				 web.CONFIG
+
+				 NLogger Class:::::
+				 folder “Helpers” in the API, which will segregate the application
+				  code for readability, better understanding and maintainability.
+				  //todo
+				  also add mandatory files in Helpers folder ::::JsonHelper
+				  ::::ServiceStatus 
+				  //todo
+				  also add folder of :::ErrorHelper and all its mandatory files 
+
+
+NEXT BIG STEP
+:::::::::::::::::::::::::::::::::Exception Logging:::::::::::::::::::::::::::::::
+
+we’ll focus on centralizing exception logging as well, so that none
+ of the exception escapes without logging itself. Logging exception 
+ is of very high importance, it keeps track of all the exceptions.
+
+ Step 1: Exception Filter Attribute
+ Adding an action filter in our application for logging the exceptions,
+  for this create a :::::::::::::::class GlobalExceptionAttribute
+
+  //NEXT BIG STEP
+  :::::::::::::::::::::::::::::::::::::::::::::::::::::Custom Exception logging:::::::::::::::::::::::::::::::::
+
+  In the above section we have implemented exception logging, 
+  but there is default system response and status ( i. e. 500/Internal Server Error) 
+  , It will be always good to have your own custom response and exceptions for your API.
+   That will be easier for client to consume and understand the API responses.
+   
+   STEP ONE:
+   :::::::Add “Error Helper” folder to application to maintain our custom exception classes
+    separately and add “IApiExceptions” interface to newly created “ErrorHelper” folder -
+
+	TODO
+	1. API Exceptions – for API level exceptions.
+2. Business Exceptions – for exceptions at business logic level.
+3. Data Exceptions – Data related exceptions.
+
+To implement this create a three new classes ApiException.cs, 
+ApiDataException.cs and ApiBusinessException classes to same folder which implements IApiExceptions interface
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

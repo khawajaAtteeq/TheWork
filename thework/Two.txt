@@ -1,0 +1,37 @@
+﻿
+Design Flaws
+
+1. Architecture is tightly coupled. IOC (Inversion of Control) needs to be there.
+2. We cannot define our own routes.
+3. No exception handling and logging.
+4. No unit tetsts.
+
+Conclusion
+
+We now know how to create a WebAPI and perform CRUD operations using n layered architecture.
+But still there are some flaws in this design.In my next two articles I’ll explain how to make 
+the system loosely coupled using Dependency Injection Principle. We’ll also cover all the design
+flaws to make our design better and stronger.
+
+
+Inversion of control using dependency injection in Web API's 
+using Unity Container and Bootstrapper.
+
+ Introduction:
+
+
+My article will explain how we can make our Web API service architecture loosely coupled and more flexible.
+ We already learnt that how we can create a RESTful service using Asp.net Web API and Entity framework in
+  my last article. If you remember we ended up in a solution with a design flaw, we’ll try to overcome
+   that flaw by resolving the dependencies of dependent components. For those who have not followed my
+    previous article, they can learn by having the sample project attached as a test application from my
+	 first article.
+
+There are various methods you can use to resolve dependency of components. 
+In my article I’ll explain how to resolve dependency with the help of Unity Container
+ provided by Microsoft’s Unity Application Block.
+We’ll not go into very detailed theory, for theory and understanding of DI and IOC
+ you can follow the following links: Unity and Inversion of Control(IOC).
+ We’ll straight away jump into practical implementation
+
+
