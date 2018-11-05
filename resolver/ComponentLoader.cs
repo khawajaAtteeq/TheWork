@@ -29,7 +29,6 @@ namespace Resolver
                         foreach (IComponent module in modules)
                         {
                             module.SetUp(registerComponent); 
-
                         }
                     }
                 }
@@ -77,6 +76,12 @@ namespace Resolver
         public void RegisterTypeWithControlledLifeTime<TFrom, TTo>(bool withInterception = false) where TTo : TFrom
         {
             this._container.RegisterType<TFrom, TTo>(new ContainerControlledLifetimeManager());
+        }
+
+        // this is a test Id
+        public void TestVoid()
+        {
+
         }
     }
 }
