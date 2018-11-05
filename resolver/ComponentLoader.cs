@@ -28,7 +28,8 @@ namespace Resolver
                         var registerComponent = new RegisterComponent(container);
                         foreach (IComponent module in modules)
                         {
-                            module.SetUp(registerComponent);
+                            module.SetUp(registerComponent); 
+
                         }
                     }
                 }
